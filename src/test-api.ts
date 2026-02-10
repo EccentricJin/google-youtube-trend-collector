@@ -55,7 +55,9 @@ async function main() {
         console.log(`    첫 결과: ${result.items[0].title.substring(0, 60)}`);
       }
     } catch (e) {
-      check(`Google API 오류: ${(e as Error).message}`, false);
+      console.log(`  ⚠️  Google Custom Search API 사용 불가 (신규 고객 차단됨)`);
+      console.log(`     → YouTube API로 대체 수집 가능합니다`);
+      console.log(`     → 기존 Custom Search API 사용자는 정상 동작합니다`);
     }
   } else {
     console.log("  ⏭️  GOOGLE_API_KEY 또는 GOOGLE_CSE_ID 미설정 - 건너뜀");

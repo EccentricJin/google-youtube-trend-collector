@@ -8,10 +8,26 @@ interface VideoInfo {
 }
 
 async function main() {
+  // 존재하는 토픽만 구독
+  const admin = kafka.admin();
+  await admin.connect();
+  const existingTopics = await admin.listTopics();
+  await admin.disconnect();
+
+  const topicsToSubscribe = [GOOGLE_SEARCH_TOPIC, YOUTUBE_SEARCH_TOPIC].filter((t) =>
+    existingTopics.includes(t),
+  );
+
+  if (topicsToSubscribe.length === 0) {
+    console.log("⚠️  구독할 토픽이 없습니다. 먼저 데이터를 수집해주세요.");
+    return;
+  }
+  console.log(`구독 토픽: ${topicsToSubscribe.join(", ")}`);
+
   const consumer = kafka.consumer({ groupId: `${KAFKA_GROUP_ID}-summary-${Date.now()}` });
   await consumer.connect();
   await consumer.subscribe({
-    topics: [GOOGLE_SEARCH_TOPIC, YOUTUBE_SEARCH_TOPIC],
+    topics: topicsToSubscribe,
     fromBeginning: true,
   });
 
