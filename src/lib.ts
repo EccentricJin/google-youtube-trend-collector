@@ -13,6 +13,7 @@ export const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY ?? "";
 
 export const GOOGLE_SEARCH_TOPIC = "google-search-results";
 export const YOUTUBE_SEARCH_TOPIC = "youtube-search-results";
+export const YOUTUBE_INGREDIENTS_TOPIC = "youtube-ingredient-prices";
 
 export { CompressionTypes };
 

@@ -9,6 +9,8 @@
     "collect:youtube": "npx tsx src/collect-youtube.ts",
     "collect:all": "npx tsx src/collect-all.ts",
     "summary": "npx tsx src/consume-summary.ts",
+    "collect:ingredients": "npx tsx src/collect-ingredients.ts",
+    "summary:ingredients": "npx tsx src/consume-ingredients.ts",
     "test:api": "npx tsx src/test-api.ts"
   },
   "keywords": ["google", "youtube", "kafka", "trend-collector"],
